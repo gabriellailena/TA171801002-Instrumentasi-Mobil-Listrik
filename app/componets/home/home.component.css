@@ -1,0 +1,31 @@
+img {
+    position: absolute;
+    left: 280px;
+    top: 20px;
+    z-index: 1;
+}
+
+
+a {
+	z-index: -2;
+	margin-left: 0.6em;
+}
+
+p {
+	margin-left: 0.8em;
+}
+
+h1 { 
+    display: block;
+    font-size: 4.5em;
+	font-family: montserrat, sans-serif;
+	margin-top: 1em;
+	margin-left: 0.1em;
+}
+
+h5 { 
+    display: block;
+    font-size: 1.3em;
+	font-family: montserrat, sans-serif;
+	margin-left: 0.6em;
+}
