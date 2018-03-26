@@ -28,8 +28,8 @@ export class SensorComponent implements OnInit {
 
 getSensorData() {
 	this.authService.getSensor(this.page, this.size).subscribe(arr => {      
-	  this.maxpage = Math.ceil(arr[0].rows / this.size);
-      this.sensor = arr;
+	  this.maxpage = Math.ceil(arr[1].rows / this.size);
+      this.sensor = arr[0];
     }, error => {
       console.log(error);
       return false;
