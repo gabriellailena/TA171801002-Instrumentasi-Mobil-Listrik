@@ -1,0 +1,67 @@
+<style>
+#buttons{
+    float:right;
+    position:relative;
+    left:-50%;
+    text-align:left;
+}
+#buttons ul{
+    list-style:none;
+    position:relative;
+    left:50%;
+}
+
+#buttons li{float:left;position:relative;}/* ie needs position:relative here*/
+
+#content{overflow:hidden}/* hide horizontal scrollbar*/
+</style>
+
+<div *ngIf = "sensor">
+	<h2 class="page-header"> Sensor Data </h2>
+		<table>
+			  <tr>
+				<th rowspan = "2">Time</th>
+				<th rowspan = "2">Date</th>
+				<th rowspan = "2">Longitude</th>
+				<th rowspan = "2">Latitude</th>
+				<th colspan = "2">Battery Temperature (C)</th>
+				<th rowspan = "2">Motor Temperature (C)</th>
+				<th rowspan = "2">Battery Voltage (V)</th>
+				<th rowspan = "2">State-of-Charge (%)</th>
+				<th rowspan = "2">Battery Current (DC-A)</th>
+				<th rowspan = "2">Motor Current (AC-A)</th>
+				<th rowspan = "2">Motor Speed (RPM)</th>
+				<th rowspan = "2">Torque (Nm)</th>
+			  </tr>
+			  <tr>
+				<td> 1 </td>
+				<td> 2 </td>
+			  </tr>
+			  <tr *ngFor = "let d of sensor;">
+				<td> {{d.time}}</td>
+				<td> {{d.date}}</td>
+				<td> {{d.lon}}</td>
+				<td> {{d.lat}}</td>
+				<td> {{d.suhu_bat1}}</td>
+				<td> {{d.suhu_bat2}}</td>
+				<td> {{d.suhu_motor}}</td>
+				<td> {{d.v_batt}}</td>
+				<td> {{d.soc}}</td>
+				<td> {{d.arus_dc}}</td>
+				<td> {{d.arus_ac}}</td>
+				<td> {{d.rpm_motor}}</td>
+				<td> {{d.torsi_motor}}</td>
+			  </tr>
+		</table>
+
+		<div class="pull-right">
+            <input type="button" value="<<" class="btn btn-outline-success btn-sm" (click)="onClickPrevious()"/>
+            {{page+1}}/{{maxpage}}
+            <input type="button" value=">>" class="btn btn-outline-success btn-sm" (click)="onClickNext()"/>
+        </div>
+</div>
+
+		
+
+
+  
