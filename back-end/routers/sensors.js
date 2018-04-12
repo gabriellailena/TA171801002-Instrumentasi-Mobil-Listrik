@@ -35,7 +35,7 @@ router.post('/add', function (req, res) {
 
 // RETURNS ALL THE SENSOR IN THE DATABASE
 router.get('/getAllData', passport.authenticate('jwt',{session:false}), function (req, res, next) {  
-	/*var perPage = 5;
+	/*var perPage = 500;
 	var page = req.params.page || 1;
 	var pages;
 	
@@ -51,17 +51,19 @@ router.get('/getAllData', passport.authenticate('jwt',{session:false}), function
 	Sensor.find({}).sort({_id: -1}).exec(function (err, sensors) {
 		if (err) return res.status(500).send("There was a problem finding the sensors.");
 		Sensor.count().exec(function(err, count) {
+			if (err) return res.status(500).send("Error calculating pages.");
 				var arr = [];
-				var rowob = {};
+				var newobj = {};
 				var fld = "rows";
 				var num = count;
-				rowob[fld] = num;
-				arr.push(rowob);
+				newobj[fld] = num;
+				arr.push(newobj);
 				
-				var data = sensors;
-				arr = arr.concat(data);
+				var data = [];
+				data.push(sensors);
+				data = data.concat(arr);
 	
-				res.status(200).send(arr);
+				res.status(200).send(data);
 		});
     });
 });
