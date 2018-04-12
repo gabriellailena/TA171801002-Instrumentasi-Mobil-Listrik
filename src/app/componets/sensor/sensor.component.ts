@@ -26,35 +26,35 @@ export class SensorComponent implements OnInit {
 	this.getSensorData();
   }
 
-getSensorData() {
-	this.authService.getSensor(this.page, this.size).subscribe(arr => {      
-	  this.maxpage = Math.ceil(arr[1].rows / this.size);
-      this.sensor = arr[0];
-    }, error => {
-      console.log(error);
-      return false;
-    });
-}
-
-onClickNext() {
+  onClickNext() {
     if (this.page < (this.maxpage - 1)) {
       this.page++;
       this.getSensorData();
     }
   }
 
-onClickSelectedPage(input) {
+  onClickSelectedPage(input) {
     if (input > 0 && input < (this.maxpage - 1)) {
       this.page = input - 1;
       this.getSensorData();
     }
   }
 
-onClickPrevious() {
+  onClickPrevious() {
     if (this.page > 0) {
       this.page--;
       this.getSensorData();
     }
+  }
+ 
+  getSensorData() {
+	this.authService.getSensor(this.page, this.size).subscribe(data => {      
+	  this.maxpage = Math.ceil(data[1].rows / this.size);
+      this.sensor = data[0];
+    }, error => {
+      console.log(error);
+      return false;
+    });
   }
   
 }
